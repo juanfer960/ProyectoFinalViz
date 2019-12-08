@@ -1,6 +1,6 @@
 
 MIT License
-Copyright (c) 2019 Juan Fernando Zuluaga Ramírez  - Ariel Ricardo Moncaleano Ospina - Andrés Camilo Zúñiga González
+Copyright (c) 2019 Ariel Ricardo Moncaleano Ospina - Andrés Camilo Zúñiga González -Juan Fernando Zuluaga Ramírez  - 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
