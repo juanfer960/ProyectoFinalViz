@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>SiB Colombia - Instituto Alexander von Humboldt</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="page-top">
@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Data Viz </sup></div>
+        <div class="sidebar-brand-text mx-3">SiB Colombia</sup></div>
       </a>
 
       <!-- Divider -->
@@ -115,241 +115,223 @@
         <div class="container-fluid">
 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Tarea 1 : </h1>
+            <h1 class="h1 mb-0 text-gray-800">Tarea 1 : Taxonomía, tipo de registro y organizaciones publicadoras</h1>
+            
           </div>
-
-          <!-- Approach -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-            </div>
-            <div class="card-body">
-              <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-              <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-            </div>
-          </div>
-
+          <p class="mb-4" style="font-size:20px">
+              Esta página permite visualizar los datos del SiB Colombia de acuerdo al tipo de registro y nivel taxonómico, con filtros para el tipo y nombre de la organización publicadora.
+              Los datos se filtran escogiendo alguna opción de procedencia y/o nombre de organización, así como buscando y/o señalando uno o varios grupos taxonómicos en los distintos niveles. 
+              Al pasar el mouse en una categoría de cualquiera de las visualizaciones, se puede ver el número de registros para dicha categoría.
+            </p>
           <div class="row">
-            <div class="col-lg-6 mb-4">
-              <div class="card bg-primary text-white shadow">
-                <div class="card-body">
-                  Visualizacion uno:
-                  <div class="text-white-50 small">Visualizacion Temporal</div>
+            <div class='col-xl-4 col-lg-7'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Procedencia de la organización</h2>
                 </div>
+                  <div class='card-body'>
+                    <div id="select1">
+                      <span class="reset" style="display: none;">Seleccionados:
+                        <span class="filter"></span>
+                        <a class="reset" href="javascript:select1.filterAll();dc.redrawAll();" style="display">Reset</a>
+                      </span>
+                    </div>
+                  </div>
               </div>
             </div>
-          </div>
-          <!-- Area Chart -->
-          <div class="col-xl-6 col-lg-8" id="segunda">
-            <div class="card shadow mb-7">
-              <!-- Card Header - Dropdown -->
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">visualizacion uno</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+          
+            <div class='col-xl-8 col-lg-7'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                    <h2 class="m-0 font-weight-bold text-primary">Nombre de la organización</h2>
+                </div>
+                <div class='card-body'>
+                  <div id="select2">
+                    <span class="reset" style="display: none;">Socio(s) seleccionados:
+                        <span class="filter"></span>
+                        <a class="reset" href="javascript:select2.filterAll();dc.redrawAll();" style="display">Reset</a>
+                    </span>
+                  </div>
+                  </div>
+                </div>
+              </div>  
+         </div>
+          
+         <div class="row">
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Tipo de Registro</h2>
+                </div>
+                  <div class='card-body'>
+                    <div id='basisOfRecord'>
+                        <div id="basisOfRecord-legend"></div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                    <h2 class="m-0 font-weight-bold text-primary">Reino</h2>
+                </div>
+                <div class='card-body'>
+                    <div id='kingdom'>
+                        <div>            
+                            <span class="reset" style="display: none;">Reino(s) seleccionado(s):
+                                <span class="filter"></span>
+                                <a class="reset" href="javascript:kingdomChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+         </div>
+
+         <div class="row">
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Phylum</h2>
+                </div>
+                  <div class='card-body'>
+                    <div id='phylum'>
+                        <div id="phylum-search" class="col-md-3"></div>
+                        <div id='phylum-axis'></div>
+                        <div id="phylum-chart"  style="overflow-y:auto; height:200px;">
+                            <div>            
+                                <span class="reset" style="display: none;">Phylum seleccionado(s):
+                                    <span class="filter"></span>
+                                    <a class="reset" href="javascript:phylumChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                    <h2 class="m-0 font-weight-bold text-primary">Clase</h2>
+                </div>
+                <div class='card-body'>
+                  <div id='class'>
+                      <div id="class-search"></div>
+                      <div id='class-axis'></div>
+                      <div id="class-chart"  style="overflow-y:auto; height:200px;">
+                          <div>            
+                              <span class="reset" style="display: none;">Clase(s) seleccionada(s):
+                                  <span class="filter"></span>
+                                  <a class="reset" href="javascript:classChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                              </span>
+                          </div>
+                      </div>
                   </div>
                 </div>
               </div>
-              <!-- Card Body -->
-              <div class="card-body">
-              <!-- **************************************************************************************** -->
-              <script src="https://d3js.org/d3.v4.js"></script>
+            </div>  
+         </div>
 
-              <!-- Create a div where the graph will take place -->
-              <div id="my_dataviz">
-                <script>
-
-                // set the dimensions and margins of the graph
-                var margin = {top: 10, right: 30, bottom: 30, left: 50},
-                    width = 460 - margin.left - margin.right,
-                    height = 400 - margin.top - margin.bottom;
-
-                // append the svg object to the body of the page
-                var svg = d3.select("#my_dataviz")
-                  .append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform",
-                          "translate(" + margin.left + "," + margin.top + ")");
-
-                //Read the data
-                d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
-
-                  // When reading the csv, I must format variables:
-                  function(d){
-                    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
-                  },
-
-                  // Now I can use this dataset:
-                  function(data) {
-
-                    // Add X axis --> it is a date format
-                    var x = d3.scaleTime()
-                      .domain(d3.extent(data, function(d) { return d.date; }))
-                      .range([ 0, width ]);
-                    svg.append("g")
-                      .attr("transform", "translate(0," + height + ")")
-                      .call(d3.axisBottom(x));
-
-                    // Add Y axis
-                    var y = d3.scaleLinear()
-                      .domain([0, d3.max(data, function(d) { return +d.value; })])
-                      .range([ height, 0 ]);
-                    svg.append("g")
-                      .call(d3.axisLeft(y));
-
-                    // Add the area
-                    svg.append("path")
-                      .datum(data)
-                      .attr("fill", "#cce5df")
-                      .attr("stroke", "#69b3a2")
-                      .attr("stroke-width", 1.5)
-                      .attr("d", d3.area()
-                        .x(function(d) { return x(d.date) })
-                        .y0(y(0))
-                        .y1(function(d) { return y(d.value) })
-                        )
-
-                })
-
-                </script>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <div class="col-lg-6 mb-4">
-              <div class="card bg-primary text-white shadow">
-                <div class="card-body">
-                  Visualizacion dos:
-                  <div class="text-white-50 small">Visualizacion Temporal con tendencia</div>
+         <div class="row">
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Orden</h2>
                 </div>
+                  <div class='card-body'>
+                    <div id='order'>
+                        <div id="order-search"></div>
+                        <div id='order-axis'></div>
+                        <div id="order-chart" style="overflow-y:auto; height:200px;">
+                            <div>
+                                <span class="reset" style="display: none;">Orden(es) seleccionado(s):
+                                        <span class="filter"></span>
+                                        <a class="reset" href="javascript:orderChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
               </div>
             </div>
-          </div>
-
-          <!--******************************************************************************************************************************-->
-          <div class="col-xl-6 col-lg-8" id="segunda">
-            <div class="card shadow mb-7">
-              <!-- Card Header - Dropdown -->
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">visualizacion dos</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+          
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                    <h2 class="m-0 font-weight-bold text-primary">Familia</h2>
+                </div>
+                <div class='card-body'>
+                  <div id='family'>
+                      <div id="family-search"></div>
+                      <div id='family-axis'></div>
+                      <div id="family-chart" style="overflow-y:auto; height:200px;">
+                          <div>
+                              <span class="reset" style="display: none;">Familia(s) seleccionada(s):
+                                  <span class="filter"></span>
+                                  <a class="reset" href="javascript:familyChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                              </span>
+                          </div>
+                      </div>
                   </div>
                 </div>
               </div>
-              <!-- Card Body -->
-              <div class="card-body">
-              <!-- **************************************************************************************** -->
-              <script src="https://d3js.org/d3.v5.js"></script>
+            </div>  
+         </div>
 
-              <!-- Create a div where the graph will take place -->
-              <div id="my_dataviz_1">
-                <script>
-
-                x = d3.scaleBand()
-                .domain(data.map(d => d.name))
-                .range([margin.left, width - margin.right])
-                .padding(0.1);
-
-                y = d3.scaleLinear()
-                .domain([0, d3.max(data, d => d.value)]).nice()
-                .range([height - margin.bottom, margin.top]);
-
-                xAxis = g => g
-                .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x).tickSizeOuter(0));
-
-                yAxis = g => g
-                .attr("transform", `translate(${margin.left},0)`)
-                .call(d3.axisLeft(y))
-                .call(g => g.select(".domain").remove());
-
-                height = 400;
-                margin = ({top: 20, right: 0, bottom: 30, left: 40});
-                chart.update(order);
-
-                //data = (await d3.csv("https://raw.githubusercontent.com/juanfer960/DATA_TOLIMA/master/Nacimientos_en_el_Dpto_del_Tolima_a_2015.csv", ({municipio, total}) => ({name: municipio, value: +total}))).sort((a, b) => b.value - a.value);
-
-                chart = {
-
-                  const svg = d3.create("svg").attr("viewBox", [0, 70, width, height])
-
-                    const bar = svg.append("g")
-                      .attr("fill", "steelblue")
-                    .selectAll("rect")
-                    .data(data)
-                    .join("rect")
-                      .style("mix-blend-mode", "multiply")
-                      .attr("x", d => x(d.name))
-                      .attr("y", d => y(d.value))
-                      .attr("height", d => y(0) - y(d.value))
-                      .attr("width", x.bandwidth());
-
-                  const gx =svg.append("g")
-                      .call(xAxis)
-                      .attr("text-anchor", "end")
-                      .selectAll(".tick text") // Rotate the x axis labels 45 deg
-
-
-                      .attr("transform", "rotate(-45)");
-
-                   const gy = svg.append("g")
-                      .call(yAxis);
-
-                  return Object.assign(svg.node(), {
-                    update(order) {
-                      x.domain(data.sort(order).map(d => d.name));
-
-                      const t = svg.transition()
-                          .duration(750);
-
-                      bar.data(data, d => d.name)
-                          .order()
-                        .transition(t)
-                          .delay((d, i) => i * 20)
-                          .attr("x", d => x(d.name));
-
-                      gx.transition(t)
-                          .call(xAxis)
-                        .selectAll(".tick")
-                          .delay((d, i) => i * 20);
-                    }
-                  });
-
-                  return svg.node();
-                }
-                </script>
-              </div>
+         <div class="row">
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Género</h2>
+                </div>
+                  <div class='card-body'>
+                    <div id='genus'>
+                        <div id="genus-search"></div>
+                        <div id='genus-axis'></div>
+                        <div id="genus-chart" style="overflow-y:auto; height:200px;">
+                            <div>
+                                <span class="reset" style="display: none;">Género(s) seleccionado(s):
+                                    <span class="filter"></span>
+                                    <a class="reset" href="javascript:genusChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
               </div>
             </div>
-          </div>
+          
+            <div class='col-xl-6 col-lg-6'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                    <h2 class="m-0 font-weight-bold text-primary">Especie</h2>
+                </div>
+                <div class='card-body'>
+                  <div id='species'>
+                      <div id="species-search"></div>
+                      <div id='species-axis'></div>
+                      <div id="species-chart" style="overflow-y:auto; height:200px;">
+                          <div>
+                              <span class="reset" style="display: none;">Especie(s) seleccionada(s):
+                                  <span class="filter"></span>
+                                  <a class="reset" href="javascript:speciesChart.filterAll();dc.redrawAll();" style="display">Reset</a>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+         </div>
           <!--******************************************************************************************************************************-->
           <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; Your Website 2019</span>
+                  <span>Visual Analytics - Universidad de los Andes, 2019</span>
                 </div>
             </div>
           </footer>
@@ -374,6 +356,11 @@
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.4.7/crossfilter.js'></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="http://unpkg.com/dc@3/dc.js"></script>
+    <script src="axis.js"></script>
+    <script src="./DCFilter_Humboldt.js"></script>
 </body>
 
 </html>
