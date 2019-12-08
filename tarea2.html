@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -140,88 +141,18 @@
             </div>
           </div>
           <!-- Area Chart -->
-          <div class="col-xl-6 col-lg-8" id="segunda">
+          <div class="col-xl-10 col-lg-8" id="segunda">
             <div class="card shadow mb-7">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">visualizacion uno</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
               </div>
               <!-- Card Body -->
               <div class="card-body">
               <!-- **************************************************************************************** -->
-              <script src="https://d3js.org/d3.v4.js"></script>
-
               <!-- Create a div where the graph will take place -->
-              <div id="my_dataviz">
-                <script>
-
-                // set the dimensions and margins of the graph
-                var margin = {top: 10, right: 30, bottom: 30, left: 50},
-                    width = 460 - margin.left - margin.right,
-                    height = 400 - margin.top - margin.bottom;
-
-                // append the svg object to the body of the page
-                var svg = d3.select("#my_dataviz")
-                  .append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform",
-                          "translate(" + margin.left + "," + margin.top + ")");
-
-                //Read the data
-                d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
-
-                  // When reading the csv, I must format variables:
-                  function(d){
-                    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
-                  },
-
-                  // Now I can use this dataset:
-                  function(data) {
-
-                    // Add X axis --> it is a date format
-                    var x = d3.scaleTime()
-                      .domain(d3.extent(data, function(d) { return d.date; }))
-                      .range([ 0, width ]);
-                    svg.append("g")
-                      .attr("transform", "translate(0," + height + ")")
-                      .call(d3.axisBottom(x));
-
-                    // Add Y axis
-                    var y = d3.scaleLinear()
-                      .domain([0, d3.max(data, function(d) { return +d.value; })])
-                      .range([ height, 0 ]);
-                    svg.append("g")
-                      .call(d3.axisLeft(y));
-
-                    // Add the area
-                    svg.append("path")
-                      .datum(data)
-                      .attr("fill", "#cce5df")
-                      .attr("stroke", "#69b3a2")
-                      .attr("stroke-width", 1.5)
-                      .attr("d", d3.area()
-                        .x(function(d) { return x(d.date) })
-                        .y0(y(0))
-                        .y1(function(d) { return y(d.value) })
-                        )
-
-                })
-
-                </script>
+                <div id="timeline">
+              </div>
               </div>
               </div>
             </div>
@@ -230,7 +161,7 @@
           <hr>
 
           <div class="row">
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-12 mb-5">
               <div class="card bg-primary text-white shadow">
                 <div class="card-body">
                   Visualizacion dos:
@@ -241,7 +172,7 @@
           </div>
 
           <!--******************************************************************************************************************************-->
-          <div class="col-xl-6 col-lg-8" id="segunda">
+          <div class="col-xl-12" id="segunda">
             <div class="card shadow mb-7">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -260,91 +191,34 @@
                 </div>
               </div>
               <!-- Card Body -->
-              <div class="card-body">
+              <div class="row">
               <!-- **************************************************************************************** -->
-              <script src="https://d3js.org/d3.v5.js"></script>
-
               <!-- Create a div where the graph will take place -->
-              <div id="my_dataviz_1">
-                <script>
+                <!-- <div id="kingdom"></div> -->
+                <div class="col-xs-12 col-md-6">
+                  <h6>Kingdom</h6>
+                  <div id="kingdom"></div>
+                </div>
+            
+                <!-- On small screens fills the full grid, on medium+ ones only half -->
+                <div class="col-xs-12 col-md-6">
+                  <h6>Mes</h6>
+                  <div id="mes"></div>
+                </div>
+  
+              </div>
+          
+              <!-- On small screens fills the full grid, on medium+ ones only half -->
+          
 
-                x = d3.scaleBand()
-                .domain(data.map(d => d.name))
-                .range([margin.left, width - margin.right])
-                .padding(0.1);
-
-                y = d3.scaleLinear()
-                .domain([0, d3.max(data, d => d.value)]).nice()
-                .range([height - margin.bottom, margin.top]);
-
-                xAxis = g => g
-                .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x).tickSizeOuter(0));
-
-                yAxis = g => g
-                .attr("transform", `translate(${margin.left},0)`)
-                .call(d3.axisLeft(y))
-                .call(g => g.select(".domain").remove());
-
-                height = 400;
-                margin = ({top: 20, right: 0, bottom: 30, left: 40});
-                chart.update(order);
-
-                //data = (await d3.csv("https://raw.githubusercontent.com/juanfer960/DATA_TOLIMA/master/Nacimientos_en_el_Dpto_del_Tolima_a_2015.csv", ({municipio, total}) => ({name: municipio, value: +total}))).sort((a, b) => b.value - a.value);
-
-                chart = {
-
-                  const svg = d3.create("svg").attr("viewBox", [0, 70, width, height])
-
-                    const bar = svg.append("g")
-                      .attr("fill", "steelblue")
-                    .selectAll("rect")
-                    .data(data)
-                    .join("rect")
-                      .style("mix-blend-mode", "multiply")
-                      .attr("x", d => x(d.name))
-                      .attr("y", d => y(d.value))
-                      .attr("height", d => y(0) - y(d.value))
-                      .attr("width", x.bandwidth());
-
-                  const gx =svg.append("g")
-                      .call(xAxis)
-                      .attr("text-anchor", "end")
-                      .selectAll(".tick text") // Rotate the x axis labels 45 deg
-
-
-                      .attr("transform", "rotate(-45)");
-
-                   const gy = svg.append("g")
-                      .call(yAxis);
-
-                  return Object.assign(svg.node(), {
-                    update(order) {
-                      x.domain(data.sort(order).map(d => d.name));
-
-                      const t = svg.transition()
-                          .duration(750);
-
-                      bar.data(data, d => d.name)
-                          .order()
-                        .transition(t)
-                          .delay((d, i) => i * 20)
-                          .attr("x", d => x(d.name));
-
-                      gx.transition(t)
-                          .call(xAxis)
-                        .selectAll(".tick")
-                          .delay((d, i) => i * 20);
-                    }
-                  });
-
-                  return svg.node();
-                }
-                </script>
+                <!-- <div id="mes"></div> -->
+              </div>
               </div>
               </div>
             </div>
           </div>
+
+
           <!--******************************************************************************************************************************-->
           <footer class="sticky-footer bg-white">
             <div class="container my-auto">
@@ -373,6 +247,12 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+
+  <script src="js/crossfilter.js"></script>
+  <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+  <script src="js/main.js"></script>
+  <script src="js/barChart.js"></script>
+  <script src="js/timeSeriesChart.js"></script>
 
 </body>
 

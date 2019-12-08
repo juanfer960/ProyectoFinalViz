@@ -1,0 +1,48 @@
+#timeline .line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+#timeline .area {
+  /*fill: #969696;*/
+  fill: steelblue;
+}
+
+#timeline .attention {
+  background: yellow;
+  margin: -4px;
+  padding: 4px;
+}
+
+#kingdom .bar {
+  fill: steelblue;
+}
+
+#kingdom .x.axis text {
+	text-anchor: end;
+}
+
+#kingdom svg {
+	overflow: visible;
+}
+
+#mes .bar {
+  fill: steelblue;
+}
+
+.barChart .bar {
+  fill: steelblue;
+}
+
+.barChart .x.axis path {
+  display: none;
+}
+#mes .x.axis text {
+	text-anchor: end;
+}
+
+#mes svg {
+	overflow: visible;
+}
+
