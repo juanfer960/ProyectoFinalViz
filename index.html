@@ -126,23 +126,102 @@
             <div class="col-lg-6 mb-4">
               <div class="card bg-primary text-white shadow">
                 <div class="card-body">
-                  Post Tarea Uno:
-                  <div class="text-white-50 small">Visualizacion Temporal</div>
+                  Post Tarea Uno: Taxonomía, tipo de registro y organizaciones publicadoras  
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Approach -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+          <div class='card shadow mb-4'>
+            <div class='card-header py-3'>
+              <h2 class="m-0 font-weight-bold text-primary">Development Approach</h2>
             </div>
-            <div class="card-body">
-              <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-              <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+            <div class='card-body'>
+              <div id='development_approach'>
+                En las reuniones con el cliente, se encontraron varios ejes temáticos sobre los cuales hacer representaciones visuales de los datos, particularmente centrado en los socios publicadores de registros biológicos.
+                Uno de los ejes más importantes es la taxonomía de los registro, es decir la clasificación taxonómica de cada registro, para cada uno de los niveles suministrados, los cuales son Reino, Phylum, Clase, Orden, Familia, Género y Especie.
+                Adicionalmente, muy relacionado con la taxonomía está el tipo de registro, es decir, si es de colección en museos, si se registró en campo o, por ejemplo, es un fósil. De acuerdo con esto, diseñamos un panel interactivo que permite 
+                filtrar los datos de acuerdo a los distintos niveles taxonómicos, tipo de registro y la procedencia y nombre del publicador. Para ello, el cliente nos proporcionó la base de datos del SiB Colombia, la cual para esta tarea en particular,
+                fue limpiada utilizando pandas v.0.25.3 en Python 3.7. En cuanto a la visualización, las gráficas fueron realizadas con D3.js v5, dc.js v3.1.8 y Crossfilter. Los modismos están basados en el Framework de Tamara Munzner.
+              </div>
             </div>
           </div>
+          <div class='card shadow mb-4'>
+            <div class='card-header py-3'>
+              <h2 class="m-0 font-weight-bold text-primary">Insights</h2>
+            </div>
+            <div class='card-body'>
+              <div id='insight'>
+                A primera vista se puede ver que la mayor parte de la base de datos está conformada por registros de animales, dentro de los cuales las Aves ocupan la mayoría de registros. En cuanto a las organizaciones publicadoras, se puede ver que
+                los socios internacionales tienen más registros sobre biodiversidad colombiana, que los mismos socios nacionales. Sin embargo, las instituciones nacionales contribuyen en igual medida a los registros de plantas y animales.
+                Adicionalmente, casi el 75% de registros corresponden a observaciones humanas, mientras que cerca del 20% es de especímenes preservados (museos, herbarios, colecciones, etc). También es importante resaltar que los fósiles, en su mayoría,
+                son del grupo Chromista, por lo una buena parte de los registros de este tipo en Colombia son microscópicos. Finalmente, es importante señalar que muchas de las categorías tienen valores de NA, es decir, sin asignar, lo cual es una muestra
+                de la dificultad que tienen los investigadores para identificar individuos; esto se ve particularmente reflejado en que para lso niveles taxonómicos más específicos, género y especie, hay muchos registros sin asignación.
+              </div>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xl-4 col-lg-7'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">What</h2>
+                </div>
+                  <div class='card-body'>
+                    Los datos están contenidos como atributos de una <strong>tabla</strong>, la cual tiene las siguientes variables categóricas:
+                    <br>
+                    <hl>
+                      <li><strong>País de la organización</strong> Categórica</li>
+                      <li><strong>Nombre de la organización:</strong> Categórica</li>
+                      <li><strong>Tipo de registro:</strong> Categórica</li>
+                      <li><strong>Reino:</strong> Categórica</li>
+                      <li><strong>Phylum:</strong> Categórica</li>
+                      <li><strong>Clase:</strong> Categórica</li>
+                      <li><strong>Orden:</strong> Categórica</li>
+                      <li><strong>Familia:</strong> Categórica</li>
+                      <li><strong>Género:</strong> Categórica</li>
+                      <li><strong>Especie:</strong> Categórica</li>
+                    </hl>  
+                  </div>
+              </div>
+            </div>
+          
+            <div class='col-xl-4 col-lg-7'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">Why</h2>
+                </div>
+                  <div class='card-body'>
+                    <ol>
+                      <li>Resumir <strong>(summarize)</strong> los registros en el SiB de acuerdo a su nivel taxonómico, tipo de registro y organización publicadora<strong> (distribution)</strong>.</li>
+                      <li>Buscar <strong>(browse)</strong> el número de registros para un cierto nivel taxonómico, tipo de registro y/o organización<strong> (distribution)</strong>.</li>
+                      <li>Descubrir <strong>(discover)</strong> la contribución de cada organización en cuanto a tipo de registro y cada nivel taxonómico<strong> (features)</strong>.</li>
+                    </ol>
+                  </div>
+              </div>
+            </div>
+
+            <div class='col-xl-4 col-lg-7'>
+              <div class='card shadow mb-4'>
+                <div class='card-header py-3'>
+                  <h2 class="m-0 font-weight-bold text-primary">How</h2>
+                </div>
+                  <div class='card-body'>
+                    <h4>Marcas</h4>
+                    <ul>
+                      <li><strong>Tipo de Registro:</strong> Áreas para representar cantidades.</li>
+                      <li><strong> Todos los niveles taxonómicos:</strong> Líneas para representar cantidades.</li>
+                    </ul>
+                    <h4>Canales</h4>
+                    <ul>
+                      <li><strong>Tipo de Registro:</strong> Región espacial y color para cada valor del atributo.</li>
+                      <li><strong> Todos los niveles taxonómicos:</strong> Región espacial para cada valor del atributo y la posición en una escala común para las cantidades.</li>
+                      <li>La escala de la visualización de Reino es raíz cuadrada, mientras que para las otras es escala lineal.</li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
           <!--***************************************************************************************************************************************-->
 
             <div class="row">
